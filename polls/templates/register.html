@@ -1,0 +1,131 @@
+{% extends 'base.html' %} {% block inputs %} {%load static%}
+<div class="cont">
+    <div class="regForm container">
+        <br>
+        <h5 class="alignC">Sign up</h5>
+        <p class="alignC"> Create a Scrumban email address</p>
+        <h5>{{erro}}</h5>
+        <form id="regformid" method="post">
+            {% csrf_token %} {{ form.as_p }}
+            <div style="display:flex;justify-content: center;align-items: center;">
+                <button class="but btn btn-dark float-sm-left" name="sym" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+<style type="text/css">
+    ul.errorlist {
+        color: red;
+    }
+    
+    .regForm {
+        width: 420px;
+        background: #ffffff;
+        border-radius: 25px;
+        box-shadow: 0px -1px 4px 2px lightgrey;
+    }
+    
+    #regformid {
+        margin: 22px 22px 22px 22px;
+    }
+    
+    .cont {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    p,
+    li {
+        font-size: 15px;
+    }
+    
+    .alignC {
+        text-align: center;
+    }
+    
+    *::selection {
+        color: black;
+        background: tomato;
+    }
+    
+    .but {
+        width: 400px;
+        height: 50px;
+        margin-bottom: 30px;
+    }
+    
+    .form-control {
+        transition: .25s border ease-in-out !important;
+        border-radius: 0 !important;
+        outline: none !important;
+        box-shadow: none !important;
+        background: transparent;
+        color: black;
+        border: 0;
+        border-bottom: 2px solid #444;
+        font-size: 20px;
+    }
+    
+    .form-control:focus {
+        border-bottom-color: #CC2C21;
+    }
+    
+    .form-control:not(.touched)+.floater:before {
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        font-size: 15px !important;
+        color: black !important;
+        pointer-events: none !important;
+        transition: .25s all ease-in-out !important;
+    }
+    
+    .form-control.touched+.floater:before,
+    #username:focus+.floater:before,
+    #username:not(:placeholder-shown)+.floater:before,
+    #password:focus+.floater:before,
+    #password:not(:placeholder-shown)+.floater:before {
+        position: absolute !important;
+        top: -20px !important;
+        font-size: 14px !important;
+        color: black !important;
+    }
+    
+    p {
+        color: black !important;
+    }
+    
+    #username+.floater:before,
+    #username:focus+.floater:before {
+        content: "Username";
+    }
+    
+    #password+.floater:before,
+    #password:focus+.floater:before {
+        content: "Password";
+    }
+    
+    .link,
+    .link:hover {
+        color: #CC2C21;
+        text-decoration: none;
+    }
+</style>
+<script>
+    for (let i = 2; i <= 5; i++) {
+        $("form p:nth-child(" + i + ")").addClass("col");
+
+    }
+    $("form p:nth-child(2)").addClass("linha1");
+    $("form p:nth-child(3)").addClass("linha1");
+    $("form p:nth-child(4)").addClass("linha2");
+    $("form p:nth-child(5)").addClass("linha2");
+    $(".helptext").hide();
+    $("form ul li").css("font-size", "10px");
+    $(".linha1").wrapAll("<div class='row' />");
+    $(".linha2").wrapAll("<div class='row' />");
+</script>
+{% endblock %}
