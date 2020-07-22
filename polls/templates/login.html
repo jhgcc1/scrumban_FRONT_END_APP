@@ -1,11 +1,11 @@
  {% extends 'base.html' %} {% block inputs %} {%load static%}
-<div id="lloginMain" style="flex-wrap:wrap;display:flex;justify-content:center;align-items:center;width:100%;height:100%;">
-    <div style="margin-right: 180px;">
+<div id="lloginMain" style="flex-wrap:wrap;display:flex;justify-content:space-around;align-items:center;width:100%;height:90vh;">
+    <div>
         <p id="description">
             Scrumban helps you organizing your tasks. <br> Create projects, share them with partners and keep your tasks up to date.
         </p>
     </div>
-    <div id="llogin" style="width:370px;background-color: white">
+    <div id="llogin" style="height:500px;width:370px;background-color: white">
 
         <div style="margin: 30px 35px 30px 35px;" class="cont">
             <br>
@@ -31,8 +31,49 @@
                 </div>
 
                 <div style="display:flex;flex-direction: column;justify-content: center;align-items: center;">
-                    <button id="butao1" class="buttom1 btn btn-dark" type="submit" name="log" value="log">Next</button>
-                    <button id="butao1" class="buttom2 btn btn-dark" type="submit" name="log" value="log"><spam id="txtSp"style="color:black">Create account</spam></button>
+                    <button id="butao1" class="buttom1 btn btn-dark" type="button" name="log" value="log">Next</button>
+                    <button id="butao2" class="buttom2 btn btn-dark" type="submit" name="log" value="log"><spam class="txtSp"style="color:black">Create account</spam></button>
+                </div>
+                <br>
+            </form>
+
+        </div>
+        <div style="display:none;margin: 30px 35px 30px 35px;" class="cont2">
+            <br>
+            <div id="textologin">
+                <p style="text-align:center;font-size:25px;color:black">Scrumban</p>
+
+                <br>
+                <h5 style="text-align:center;">Sign in</h5>
+                <p style="text-align:center;">using your Scrumban account</p>
+                <br>
+
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label style="color:black" for="apower">Password</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <i class="input-group-text fa fa-key transparent"></i>
+                        </div>
+                        <input type="password" class="form-control left-border-none" name="senha" required>
+                    </div>
+                </div>
+                <div style="position: relative;top: -5px;">
+                    <div style=display:flex>
+                        <i style="margin-right:5px;color:black;font-size:17px;" class="fas fa-question-circle"></i>
+                        <a style="margin-right:5px;color:black;font-size:12px;" href="{% url 'ps' %}" id="fpass">Forgot my password</a>
+                    </div>
+
+                    <spam style="color:red;display:{{errorLogin}};font-size:12px">
+                        wrong password or login
+                    </spam>
+                </div>
+
+                <div style="display:flex;flex-direction: column;justify-content: center;align-items: center;">
+                    <button id="butao3" class="buttom3 btn btn-dark" type="button" name="log" value="log">Sign in</button>
+                    <button id="butao4" class="buttom4 btn btn-dark" type="button" name="log" value="log"><spam class="txtSp"style="color:black">&larr;</spam></button>
                 </div>
                 <br>
             </form>
@@ -42,6 +83,10 @@
 
     <br></div>
 <style>
+    body {
+        margin: 50px;
+    }
+    
     p,
     h1,
     h2,
@@ -56,13 +101,15 @@
         color: white;
     }
     
-    .buttom1 {
+    .buttom1,
+    .buttom3 {
         width: 300px;
         border-radius: 90px;
         margin-bottom: 45px;
     }
     
-    .buttom2 {
+    .buttom2,
+    .buttom4 {
         width: 300px;
         border-radius: 90px;
         margin-bottom: 25px;
@@ -70,16 +117,77 @@
         border-width: thin;
         border-color: #282828;
     }
+    
+    #llogin {
+        border-radius: 50px;
+    }
 </style>
 <script>
+    let break1 = true;
+    let voltar = false;
+    let element = document.querySelector('.cont');
+    let element2 = document.querySelector('.cont2');
+    element.addEventListener('animationend', () => {
+        console.log(break1, "break");
+        console.log(voltar, "voltar");
+        if (!voltar) {
+            $(element).hide();
+            $(element2).removeClass('animate__animated');
+            $(element2).removeClass('animate__zoomInLeft');
+            $(element2).removeClass('animate__zoomOutLeft');
+            $(element2).removeClass('animate__zoomInRight');
+            $(element2).removeClass('animate__zoomOutRight');
+            element2.classList.add('animate__animated', 'animate__zoomInRight');
+            $(element2).show();
+        } else {
+            console.log(voltar, "voltar  in");
+            if (break1) {
+                break1 = false;
+                console.log(break1, "break in");
+                //element.classList.add('animate__animated', 'animate__zoomInRight');
+            }
+        }
+    });
+    element2.addEventListener('animationend', () => {
+        console.log(voltar, "voltar out");
+        if (voltar) {
+            $(element2).hide();
+            console.log(voltar, "voltarin");
+            break1 = true;
+
+            $(element).removeClass('animate__animated');
+            $(element).removeClass('animate__zoomInLeft');
+            $(element).removeClass('animate__zoomOutLeft');
+            $(element).removeClass('animate__zoomInRight');
+            $(element).removeClass('animate__zoomOutRight');
+            element.classList.add('animate__animated', 'animate__zoomInLeft')
+            $(element).show();
+        }
+    })
     $(".buttom2").hover(function() {
-        $("#txtSp").css("color", "white")
+        $(".txtSp").css("color", "white")
     }, function() {
-        $("#txtSp").css("color", "black")
+        $(".txtSp").css("color", "black")
+    })
+    $(".buttom4").hover(function() {
+        $(".txtSp").css("color", "white")
+    }, function() {
+        $(".txtSp").css("color", "black")
     })
     $(".buttom1").click(function() {
-        const element = document.querySelector('.username');
-        element.classList.add('animate__animated', 'animate__bounceOutLeft');
+        voltar = false;
+        $(element).removeClass('animate__animated');
+        $(element).removeClass('animate__zoomInLeft');
+        $(element).removeClass('animate__zoomOutLeft');
+        $(element).removeClass('animate__zoomInRight');
+        $(element).removeClass('animate__zoomOutRight');
+        element.classList.add('animate__animated', 'animate__zoomOutLeft');
+
+
+    })
+    $(".buttom4").click(function() {
+        voltar = true;
+        element2.classList.add('animate__animated', 'animate__zoomOutRight');
     })
 </script>
 {% endblock %}
