@@ -22,7 +22,7 @@ from django.contrib.auth.views import LoginView, PasswordResetView,PasswordReset
 from django.contrib.auth import login , urls
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', views.login, name='login'),
     path('about/', views.about, name='about'),
     url(r'^login/$', views.login, name="login"),
     url(r'^register/$', views.register, name="register"),

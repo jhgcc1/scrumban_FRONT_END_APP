@@ -11,6 +11,19 @@ from django.contrib import messages
 import json
 
 # Create your views here.
+
+
+def mandaremail(request,args):
+	if(request.GET.get('mybtn')):
+		emailcliente=str(request.GET.get('emailend'))
+		emailtext=str(request.GET.get('emailtext'))
+		email = EmailMessage('Cliente: ' + emailcliente, emailtext, to=['jh_gcc@hotmail.com'])
+		email.send()
+		modelo = True
+		args['modelo']=modelo
+	return args
+
+
 def register(request):
 	nomeoulogin, logout, profile, email,pais, nome, nome2 = checarlogin(request)
 	args={'nomeoulogin':nomeoulogin,'logout':logout, 'profile':profile}

@@ -25,7 +25,14 @@ SECRET_KEY = 'wli2y4+ezgd$nph-s1d)4rlm=5@+767a*dwq%h0hk=853izqt1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "sunsubversion.herokuapp.com","127.0.0.1","sunnynvest.com","www.sunnynvest.com"
+]
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'jhgcc70@gmail.com'
+EMAIL_HOST_PASSWORD = 'npxxbkunesjcvszb'
 
 
 # Application definition
