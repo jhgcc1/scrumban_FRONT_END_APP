@@ -54,7 +54,7 @@ def home(request):
 def about(request):
 	nomeoulogin, logout, profile, email, pais, nome, nome2 = checarlogin(request)
 	args={'nomeoulogin':nomeoulogin,'logout':logout, 'profile':profile}
-	return render(request,"about.html",args)
+	return render(request,"main.html",args)
 
 def checarlogin(request):
 	if request.user.is_authenticated:

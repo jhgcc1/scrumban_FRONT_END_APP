@@ -3,6 +3,7 @@
 
 <head>
     <!-- CSS only -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -31,9 +32,6 @@
                         <a class="nav-link" href="{% url 'login' %}">Home <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'about' %}">About</a>
-                    </li>
-                    <li class="nav-item active">
                         <a class="nav-link" id="contactId">Contact</a>
                     </li>
                 </ul>
@@ -50,20 +48,19 @@
         </nav>
         <div class="tringulo">
             <div class="row">
-                <div id="kanban" class="kanban">
-                    <div id="square0" class="square square0"></div>
-                    <div id="square1" class="square square1">
+                <div id="kanbanid" class="kanbanid kanban">
+                    <div id="square0id" class="square0id square square0"></div>
+                    <div id="square1id" class="square1id square square1">
                     </div>
-                    <div id="square2" class="square square2">
+                    <div id="square2id" class="square2id square square2">
                     </div>
-                    <div id="square3" class="square square3">
+                    <div id="square3id" class="square3id square square3">
                     </div>
                 </div>
             </div>
-            <div style="display:none" id="logoName">
-                <spam id="sbN">Scrumban</spam>
+            <div style="display:none" class="logoNameid" id="logoName">
+                <spam id="sbN" class="sbN">Scrumban</spam>
             </div>
-
         </div>
     </div>
     {% block inputs %} {% endblock %}
@@ -71,7 +68,7 @@
     <style>
         body {
             font-family: 'Poppins';
-            margin: 50px 50px 0px 50px;
+            margin: 25px 50px 0px 50px;
         }
         
         .tringulo {
@@ -100,13 +97,6 @@
         
         #sbN {
             font-size: 1.2vw;
-        }
-        
-        .kanban2 {
-            display: flex;
-            position: absolute;
-            right: 70px;
-            padding-top: 1.5vw;
         }
         
         .square {
@@ -196,58 +186,32 @@
         a:hover {
             cursor: pointer;
         }
-        
-        @keyframes mymove1 {
-            from {
-                left: 0vw;
-                top: 0vw;
-                background-color: red;
-            }
-            to {
-                top: 2vw;
-                left: 2vw;
-                background-color: yellow;
-            }
-        }
-        
-        @keyframes mymove2 {
-            from {
-                left: 0vw;
-                top: 0vw;
-                background-color: yellow;
-            }
-            to {
-                top: 2vw;
-                left: 2vw;
-                background-color: green;
-            }
-        }
     </style>
     <script>
         setInterval(function() {
-            $("#logoName").fadeOut(300);
-            $("#square1").removeClass("animate13");
-            $("#square2").removeClass("animate2");
-            $("#square0").removeClass("animate0");
-            $("#square1").removeClass("animate1");
-            $("#square2").removeClass("animate31");
-            $("#square3").removeClass("animate32");
-            $("#kanban").fadeIn(300);
+            $(".logoNameid").fadeOut(300);
+            $(".square1id").removeClass("animate13");
+            $(".square2id").removeClass("animate2");
+            $(".square0id").removeClass("animate0");
+            $(".square1id").removeClass("animate1");
+            $(".square2id").removeClass("animate31");
+            $(".square3id").removeClass("animate32");
+            $(".kanbanid").fadeIn(300);
             setTimeout(function() {
-                $("#square1").addClass("animate1");
+                $(".square1id").addClass("animate1");
             }, 0);
             setTimeout(function() {
-                $("#square1").addClass("animate13");
-                $("#square2").addClass("animate2");
-                $("#square0").addClass("animate0");
+                $(".square1id").addClass("animate13");
+                $(".square2id").addClass("animate2");
+                $(".square0id").addClass("animate0");
             }, 2000);
             setTimeout(function() {
-                $("#square2").addClass("animate31");
-                $("#square3").addClass("animate32");
+                $(".square2id").addClass("animate31");
+                $(".square3id").addClass("animate32");
             }, 4000);
             setTimeout(function() {
-                $("#kanban").fadeOut();
-                $("#logoName").fadeIn(800);
+                $(".kanbanid").fadeOut();
+                $(".logoNameid").fadeIn(800);
             }, 6000);
         }, 8000);
     </script>

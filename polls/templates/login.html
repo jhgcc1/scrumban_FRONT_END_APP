@@ -1,12 +1,10 @@
  {% extends 'base.html' %} {% block inputs %} {%load static%}
-<div id="lloginMain" style="margin-top: 5%;overflow: hidden;flex-wrap:wrap;display:flex;justify-content:space-around;align-items:flex-start;width:100%;height:70vh;margin-top:5%;">
-    <div style="height: 0;margin-right:5%">
+<div id="lloginMain" style="width:100%;align-items:center;justify-content:center;margin-top:5%;display:flex;flex-wrap: wrap;">
+    <div style="margin-right:5%">
         <div id=trianguloBaixo>
-
-
         </div>
         <form id="contactForm" style="display: none;position:relative;bottom: 500px;left: 14.5%;width: 70%;" method="get">
-            <h3>Let us know what you want to say!</h3>
+            <h6>Let us know what you want to say!</h6>
             <div class="form-group">
                 <p>Email:</p>
                 <div class="input-group sm-3">
@@ -17,35 +15,41 @@
             <div class="form-group">
                 <p>Message:</p>
                 <div class="input-group sm-3">
-                    <textarea style="background-color:#282828;" class="form-control rounded-0" name="emailtext" id="exampleFormControlTextarea1" rows="8" required></textarea>
+                    <textarea style="background-color:#282828;" class="form-control rounded-0" name="emailtext" id="exampleFormControlTextarea1" rows="6" required></textarea>
                 </div>
             </div>
 
             <button class="btn btn-dark float-sm-left" type="submit" name="mybtn" value="cal">Send</button>
         </form>
 
-        <p style="position: relative;bottom: 400px;background-color:#282828;border-top: 20px solid #282828;border-left: 60px solid #282828;border-right: 20px solid #282828;border-bottom: 20px solid #282828" id="description">
+        <p style="left: -10px;position: relative;bottom: 250px;background-color:#282828;border-top: 20px solid #282828;border-left: 30px solid #282828;border-right: 20px solid #282828;border-bottom: 20px solid #282828" id="description">
             Scrumban helps you organizing your tasks. <br> Create projects, share them with partners and keep your tasks up to date.
         </p>
     </div>
-    <div id="llogin" style="height:500px;width:370px;background-color: white;margin-top:3%">
+    <div id="llogin" style="position:relative;top:-60px;height:360px;width:300px;background-color: #f8f9fa;">
 
-        <div style="margin: 30px 35px 30px 35px;" class="cont">
-            <br>
+        <div style="margin: 20px 25px 0px 25px;" class="cont">
+            <div id="sb2cont" style="height:65px;">
+                <div id="kanbanid2" class="kanbanid2 kanban2">
+                    <div id="square0id" class="square0id2 square0static staticsquare"></div>
+                    <div id="square1id" class="square1id2 square1static staticsquare">
+                    </div>
+                    <div id="square2id" class="square2id2 square2static staticsquare">
+                    </div>
+                    <div id="square3id" class="square3id2 square3static staticsquare">
+                    </div>
+                </div>
+                <p class="scrubantxt" style="top:8%;position:absolute;left:32%;display:none;text-align:center;font-size:20px;color:black">Scrumban</p>
+            </div>
             <div id="textologin">
-                <p style="text-align:center;font-size:25px;color:black">Scrumban</p>
-
-                <br>
-                <h5 style="text-align:center;">Sign in</h5>
-                <p style="text-align:center;">using your Scrumban account</p>
-                <br>
-
+                <h5 style="text-align:center;font-size:12px">Sign in</h5>
+                <p style="text-align:center;font-size:12px">using your Scrumban account</p>
             </div>
             <form action="" method="post">
                 {% csrf_token %}
                 <div class="form-group username">
-                    <label style="color:black" for="apower">Username</label>
-                    <div class="input-group mb-3">
+                    <label style="color:black;font-size:15px" for="apower">Username</label>
+                    <div class="input-group mb-2">
                         <div class="input-group-prepend">
                             <i class="input-group-text fa fa-user transparent"></i>
                         </div>
@@ -59,17 +63,31 @@
                 </div>
                 <br>
             </form>
-
         </div>
         <div style="display:none;margin: 30px 35px 30px 35px;" class="cont2">
-            <br>
-            <div id="textologin">
-                <p style="text-align:center;font-size:25px;color:black">Scrumban</p>
 
-                <br>
-                <h5 style="text-align:center;">Sign in</h5>
+            <div class="tringulo">
+                <div class="row">
+                    <div id="kanbanid" class="kanbanid kanban">
+                        <div id="square0id" class="square0id2 square square0static"></div>
+                        <div id="square1id" class="square1id2 square square1static">
+                        </div>
+                        <div id="square2id" class="square2id2 square square2static">
+                        </div>
+                        <div id="square3id" class="square3id2 square square3static">
+                        </div>
+                    </div>
+                </div>
+                <div style="display:none" class="logoName" id="logoName">
+                    <spam id="sbN" class="sbN">Scrumban</spam>
+                </div>
+            </div>
+            <div id="textologin">
+                <p style="text-align:center;font-size: 21px;color:black;">Scrumban</p>
+
+                <h5 style="text-align:center;font-size: 15px;">Sign in</h5>
                 <p style="text-align:center;">using your Scrumban account</p>
-                <br>
+
 
             </div>
             <form action="" method="post">
@@ -105,10 +123,9 @@
 
     </div>
 
-    <br>
 
 </div>
-
+<br>
 <style>
     body {}
     
@@ -121,15 +138,111 @@
         color: black;
     }
     
-    @media only screen and (max-width: 1470px) {
+    .kanban2 {
+        display: flex;
+        margin-left: 18.2%;
+    }
+    
+    .square0static {
+        top: -165px;
+        left: -165px;
+        background-color: #f8f9fa;
+    }
+    
+    .square1static {
+        top: 0px;
+        left: 0px;
+        background-color: red;
+    }
+    
+    .square2static {
+        top: 0px;
+        left: 0px;
+        background-color: yellow;
+    }
+    
+    .square3static {
+        top: 0px;
+        left: 0px;
+        background-color: green
+    }
+    
+    .staticsquare {
+        width: 20px;
+        height: 20px;
+        margin: 5px;
+        position: relative;
+        transition: all 2s ease
+    }
+    
+    .animate1static2 {
+        top: 30px;
+        left: 30px;
+        background-color: yellow;
+        transition: all 2s ease
+    }
+    
+    .animate11static2 {
+        top: 0px;
+        left: 0px;
+        background-color: red;
+        transition: all 2s ease
+    }
+    
+    .animate13static2 {
+        top: 0px;
+        transition: all 2s ease
+    }
+    
+    .animate31static2 {
+        top: 0px !important;
+        transition: all 2s ease;
+    }
+    
+    .animate32static2 {
+        opacity: 0;
+        background-color: #f8f9fa;
+        left: 30px;
+        transition: all 2s ease
+    }
+    
+    .animate2static2 {
+        top: 30px;
+        left: 30px;
+        background-color: green;
+        transition: all 2s ease
+    }
+    
+    .animate0static2 {
+        top: 0px;
+        left: 30px;
+        background-color: red;
+        transition: all 2s ease
+    }
+    
+    .animate22static2 {
+        top: 0px;
+        left: 0px;
+        background-color: yellow;
+        transition: all 2s ease
+    }
+    
+    @media only screen and (max-width: 900px) {
         #lloginMain {
-            align-items: center !important;
             flex-direction: column-reverse !important;
-            overflow:initial !important;
-            height:100% !important;
         }
         #llogin {
-            margin-bottom: 20% !important;
+            position: relative !important;
+            left: -10px !important;
+            width: 270px !important;
+            position: relative !important;
+            top: 0px !important;
+        }
+        #trianguloBaixo {
+            border-width: 370px 0 0 75vw !important;
+        }
+        #description {
+            font-size: 3vw !important;
         }
     }
     
@@ -137,7 +250,7 @@
         width: 0;
         height: 0;
         border-style: solid;
-        border-width: 600px 0 0 65vw;
+        border-width: 370px 0 0 55vw;
         border-color: transparent transparent transparent #f8f9fa;
         text-align: center;
         vertical-align: middle;
@@ -152,16 +265,16 @@
     
     .buttom1,
     .buttom3 {
-        width: 300px;
-        border-radius: 90px;
-        margin-bottom: 45px;
+        width: 200px;
+        border-radius: 70px;
+        margin-bottom: 15px;
     }
     
     .buttom2,
     .buttom4 {
-        width: 300px;
-        border-radius: 90px;
-        margin-bottom: 25px;
+        width: 200px;
+        border-radius: 70px;
+        margin-bottom: 15px;
         background-color: white;
         border-width: thin;
         border-color: #282828;
@@ -169,6 +282,17 @@
     
     #llogin {
         border-radius: 50px;
+    }
+    
+    .kanban {
+        display: flex;
+        position: absolute;
+        right: 70px;
+    }
+    
+    #logoName {
+        position: absolute;
+        right: 70px;
     }
 </style>
 <script>
@@ -236,7 +360,7 @@
     })
     $("#contactId").click(() => {
         $("#trianguloBaixo").css("transform", "rotateZ(180deg)");
-        $("#trianguloBaixo").css("border-width", "600px 0 0 45vw");
+        $("#trianguloBaixo").css("border-width", "400px 0 0 600px");
 
         $("#description").fadeOut();
         setTimeout(() => {
@@ -249,5 +373,33 @@
         voltar = true;
         element2.classList.add('animate__animated', 'animate__zoomOutRight');
     })
+</script>
+<script>
+    setInterval(function() {
+        $(".scrubantxt").fadeOut(300);
+        $(".square1id2").removeClass("animate13static2");
+        $(".square2id2").removeClass("animate2static2");
+        $(".square0id2").removeClass("animate0static2");
+        $(".square1id2").removeClass("animate1static2");
+        $(".square2id2").removeClass("animate31static2");
+        $(".square3id2").removeClass("animate32static2");
+        $(".kanbanid2").fadeIn(300);
+        setTimeout(function() {
+            $(".square1id2").addClass("animate1static2");
+        }, 0);
+        setTimeout(function() {
+            $(".square1id2").addClass("animate13static2");
+            $(".square2id2").addClass("animate2static2");
+            $(".square0id2").addClass("animate0static2");
+        }, 2000);
+        setTimeout(function() {
+            $(".square2id2").addClass("animate31static2");
+            $(".square3id2").addClass("animate32static2");
+        }, 4000);
+        setTimeout(function() {
+            $(".kanbanid2").fadeOut();
+            $(".scrubantxt").fadeIn(800);
+        }, 6000);
+    }, 8000);
 </script>
 {% endblock %}
