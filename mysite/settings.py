@@ -34,7 +34,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'jhgcc70@gmail.com'
 EMAIL_HOST_PASSWORD = 'npxxbkunesjcvszb'
 
-
 # Application definition
 
 INSTALLED_APPS = [
