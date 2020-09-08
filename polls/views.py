@@ -11,8 +11,6 @@ from django.contrib import messages
 import json
 
 # Create your views here.
-
-
 def mandaremail(request,args):
 	if(request.GET.get('mybtn')):
 		emailcliente=str(request.GET.get('emailend'))

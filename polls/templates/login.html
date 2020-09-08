@@ -1,25 +1,24 @@
  {% extends 'base.html' %} {% block inputs %} {%load static%}
-<div id="lloginMain" style="width:100%;align-items:center;justify-content:center;margin-top:5%;display:flex;flex-wrap: wrap;">
-    <div style="margin-right:5%">
+<div id="lloginMain" style="width:100%;align-items:center;justify-content:center;margin-top:2%;display:flex;flex-wrap: wrap;">
+    <div id="mediaContainer" style="margin-right:5%;height:70vh">
         <div id=trianguloBaixo>
         </div>
-        <form id="contactForm" style="display: none;position:relative;bottom: 500px;left: 14.5%;width: 70%;" method="get">
-            <h6>Let us know what you want to say!</h6>
+        <form id="contactForm" style="display: none;position:relative;bottom:90%;left: 14.5%;width: 70%;" method="get">
+            <h6 id="letus" style="font-size:2.5vw">Let us know what you want to say!</h6>
             <div class="form-group">
-                <p>Email:</p>
+                <p style="font-size:12px">Email:</p>
                 <div class="input-group sm-3">
-
-                    <input type="text" style="background-color:#282828;" class="form-control input-sm" id="apower" name="emailend" required name="price" min="0" value="" step=".01">
+                    <input id="eid" type="text" style=" height:5vh;background-color:#282828;" class="form-control input-sm" id="apower" name="emailend" required name="price" min="0" value="" step=".01">
                 </div>
             </div>
             <div class="form-group">
-                <p>Message:</p>
-                <div class="input-group sm-3">
-                    <textarea style="background-color:#282828;" class="form-control rounded-0" name="emailtext" id="exampleFormControlTextarea1" rows="6" required></textarea>
+                <p style="font-size:12px">Message:</p>
+                <div class="input-group sm-3" style="">
+                    <textarea id="mid" style="height:20vh;background-color:#282828;" class="form-control rounded-0" name="emailtext" id="exampleFormControlTextarea1" rows="5" required></textarea>
                 </div>
             </div>
 
-            <button class="btn btn-dark float-sm-left" type="submit" name="mybtn" value="cal">Send</button>
+            <button style="position:absolute;right: 0%;" class="btn btn-dark float-sm-left" type="submit" name="mybtn" value="cal">Send</button>
         </form>
 
         <p style="left: -10px;position: relative;bottom: 250px;background-color:#282828;border-top: 20px solid #282828;border-left: 30px solid #282828;border-right: 20px solid #282828;border-bottom: 20px solid #282828" id="description">
@@ -27,7 +26,6 @@
         </p>
     </div>
     <div id="llogin" style="position:relative;top:-60px;height:360px;width:300px;background-color: #f8f9fa;">
-
         <div style="margin: 20px 25px 0px 25px;" class="cont">
             <div id="sb2cont" style="height:65px;">
                 <div id="kanbanid2" class="kanbanid2 kanban2">
@@ -65,29 +63,20 @@
             </form>
         </div>
         <div style="display:none;margin: 30px 35px 30px 35px;" class="cont2">
-
-            <div class="tringulo">
-                <div class="row">
-                    <div id="kanbanid" class="kanbanid kanban">
-                        <div id="square0id" class="square0id2 square square0static"></div>
-                        <div id="square1id" class="square1id2 square square1static">
-                        </div>
-                        <div id="square2id" class="square2id2 square square2static">
-                        </div>
-                        <div id="square3id" class="square3id2 square square3static">
-                        </div>
+            <div id="sb2cont" style="height:65px;">
+                <div id="kanbanid2" class="kanbanid2 kanban2">
+                    <div id="square0id" class="square0id2 square0static staticsquare"></div>
+                    <div id="square1id" class="square1id2 square1static staticsquare">
+                    </div>
+                    <div id="square2id" class="square2id2 square2static staticsquare">
+                    </div>
+                    <div id="square3id" class="square3id2 square3static staticsquare">
                     </div>
                 </div>
-                <div style="display:none" class="logoName" id="logoName">
-                    <spam id="sbN" class="sbN">Scrumban</spam>
-                </div>
+                <p class="scrubantxt" style="top:8%;position:absolute;left:32%;display:none;text-align:center;font-size:20px;color:black">Scrumban</p>
             </div>
             <div id="textologin">
-                <p style="text-align:center;font-size: 21px;color:black;">Scrumban</p>
-
-                <h5 style="text-align:center;font-size: 15px;">Sign in</h5>
-                <p style="text-align:center;">using your Scrumban account</p>
-
+                <h5 style="text-align:center;font-size:12px">Sign in</h5>
 
             </div>
             <form action="" method="post">
@@ -106,7 +95,6 @@
                         <i style="margin-right:5px;color:black;font-size:17px;" class="fas fa-question-circle"></i>
                         <a style="margin-right:5px;color:black;font-size:12px;" href="{% url 'ps' %}" id="fpass">Forgot my password</a>
                     </div>
-
                     <spam style="color:red;display:{{errorLogin}};font-size:12px">
                         wrong password or login
                     </spam>
@@ -144,8 +132,8 @@
     }
     
     .square0static {
-        top: -165px;
-        left: -165px;
+        top: -20px;
+        left: -20px;
         background-color: #f8f9fa;
     }
     
@@ -238,11 +226,27 @@
             position: relative !important;
             top: 0px !important;
         }
+        #letus {
+            font-size: 16px !important;
+        }
         #trianguloBaixo {
-            border-width: 370px 0 0 75vw !important;
+            border-width: 350px 0 0 75vw !important;
+            margin-top: 40px;
         }
         #description {
             font-size: 3vw !important;
+        }
+        #mid {
+            height: 100px !important;
+        }
+        #eid {
+            height: 20px !important;
+        }
+        #contactForm {
+            bottom: 320px !important;
+        }
+        #mediaContainer {
+            height: 100%!important;
         }
     }
     
@@ -250,7 +254,7 @@
         width: 0;
         height: 0;
         border-style: solid;
-        border-width: 370px 0 0 55vw;
+        border-width: 65vh 0 0 55vw;
         border-color: transparent transparent transparent #f8f9fa;
         text-align: center;
         vertical-align: middle;
@@ -281,6 +285,7 @@
     }
     
     #llogin {
+        margin-top: 75px;
         border-radius: 50px;
     }
     
@@ -359,15 +364,39 @@
 
     })
     $("#contactId").click(() => {
+        if (screen.width <= 900) {
+
+            document.getElementById("lloginMain").style.setProperty('flex-direction', 'column', 'important');
+
+        }
         $("#trianguloBaixo").css("transform", "rotateZ(180deg)");
-        $("#trianguloBaixo").css("border-width", "400px 0 0 600px");
 
         $("#description").fadeOut();
         setTimeout(() => {
             $("#contactForm").fadeIn(3000);
             $("#trianguloBaixo").css("border-color", "#f8f9fa transparent transparent #f8f9fa");
+            if (screen.width <= 900) {
+                document.getElementById("llogin").style.setProperty("top", "-200px", "important");
+            }
         }, 3000);
 
+    })
+    $("#Home").click(() => {
+        $("#contactForm").hide();
+        if (screen.width <= 900) {
+            document.getElementById("lloginMain").style.setProperty('flex-direction', 'column-reverse', 'important');
+        }
+        $("#trianguloBaixo").css("border-left-width", "0vw");
+        setTimeout(() => {
+            console.log("in")
+            $("#trianguloBaixo").css("transform", "rotateZ(360deg)");
+            $("#trianguloBaixo").css("border-left-width", "");
+            $("#trianguloBaixo").css("border-width", "65vh 0 0 55vw;");
+            $("#trianguloBaixo").css("border-color", "transparent transparent transparent #f8f9fa");
+        }, 3000);
+        setTimeout(() => {
+            $("#description").fadeIn();
+        }, 6000)
     })
     $(".buttom4").click(function() {
         voltar = true;
