@@ -364,6 +364,9 @@
 
     })
     $("#contactId").click(() => {
+        clearTimeout(timeout1);
+        clearTimeout(timeout2);
+        clearTimeout(timeout3);
         if (screen.width <= 900) {
 
             document.getElementById("lloginMain").style.setProperty('flex-direction', 'column', 'important');
@@ -372,7 +375,7 @@
         $("#trianguloBaixo").css("transform", "rotateZ(180deg)");
 
         $("#description").fadeOut();
-        setTimeout(() => {
+        setTimeout(timeout3 = () => {
             $("#contactForm").fadeIn(3000);
             $("#trianguloBaixo").css("border-color", "#f8f9fa transparent transparent #f8f9fa");
             if (screen.width <= 900) {
@@ -382,20 +385,23 @@
 
     })
     $("#Home").click(() => {
+        clearTimeout(timeout1);
+        clearTimeout(timeout2);
+        clearTimeout(timeout3);
         $("#contactForm").hide();
         if (screen.width <= 900) {
             document.getElementById("llogin").style.setProperty("top", "0", "important");
             document.getElementById("lloginMain").style.setProperty('flex-direction', 'column-reverse', 'important');
         }
         $("#trianguloBaixo").css("border-left-width", "0vw");
-        setTimeout(() => {
+        setTimeout(timeout1 = () => {
             console.log("in")
             $("#trianguloBaixo").css("transform", "rotateZ(360deg)");
             $("#trianguloBaixo").css("border-left-width", "");
             $("#trianguloBaixo").css("border-width", "65vh 0 0 55vw;");
             $("#trianguloBaixo").css("border-color", "transparent transparent transparent #f8f9fa");
         }, 3000);
-        setTimeout(() => {
+        setTimeout(timeout2 = () => {
             $("#description").fadeIn();
             $("#contactForm").hide();
         }, 6000)
