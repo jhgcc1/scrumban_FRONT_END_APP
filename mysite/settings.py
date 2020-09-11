@@ -26,7 +26,7 @@ SECRET_KEY = 'wli2y4+ezgd$nph-s1d)4rlm=5@+767a*dwq%h0hk=853izqt1'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "frontendlogin.herokuapp.com"
+    "frontendlogin.herokuapp.com","127.0.0.1"
 ]
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

@@ -364,9 +364,6 @@
 
     })
     $("#contactId").click(() => {
-        clearTimeout(timeout1);
-        clearTimeout(timeout2);
-        clearTimeout(timeout3);
         if (screen.width <= 900) {
 
             document.getElementById("lloginMain").style.setProperty('flex-direction', 'column', 'important');
@@ -385,9 +382,6 @@
 
     })
     $("#Home").click(() => {
-        clearTimeout(timeout1);
-        clearTimeout(timeout2);
-        clearTimeout(timeout3);
         $("#contactForm").hide();
         if (screen.width <= 900) {
             document.getElementById("llogin").style.setProperty("top", "0", "important");
@@ -396,6 +390,11 @@
         $("#trianguloBaixo").css("border-left-width", "0vw");
         setTimeout(timeout1 = () => {
             console.log("in")
+            $("#contactForm").hide();
+            if (screen.width <= 900) {
+                document.getElementById("llogin").style.setProperty("top", "0", "important");
+                document.getElementById("lloginMain").style.setProperty('flex-direction', 'column-reverse', 'important');
+            }
             $("#trianguloBaixo").css("transform", "rotateZ(360deg)");
             $("#trianguloBaixo").css("border-left-width", "");
             $("#trianguloBaixo").css("border-width", "65vh 0 0 55vw;");
@@ -404,6 +403,10 @@
         setTimeout(timeout2 = () => {
             $("#description").fadeIn();
             $("#contactForm").hide();
+            if (screen.width <= 900) {
+                document.getElementById("llogin").style.setProperty("top", "0", "important");
+                document.getElementById("lloginMain").style.setProperty('flex-direction', 'column-reverse', 'important');
+            }
         }, 6000)
     })
     $(".buttom4").click(function() {
