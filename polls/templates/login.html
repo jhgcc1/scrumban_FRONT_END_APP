@@ -363,25 +363,41 @@
 
 
     })
-    $("#contactId").click(() => {
+
+    function contactclick() {
         if (screen.width <= 900) {
-
             document.getElementById("lloginMain").style.setProperty('flex-direction', 'column', 'important');
-
         }
         $("#trianguloBaixo").css("transform", "rotateZ(180deg)");
-
         $("#description").fadeOut();
         setTimeout(timeout3 = () => {
-            $("#contactForm").fadeIn(3000);
+            $("#contactForm").fadeIn();
             $("#trianguloBaixo").css("border-color", "#f8f9fa transparent transparent #f8f9fa");
             if (screen.width <= 900) {
                 document.getElementById("llogin").style.setProperty("top", "-200px", "important");
             }
         }, 3000);
-
+    };
+    $("#Home").click(async function() {
+        $("#Home").hide();
+        $("#contactId").hide();
+        await homeclick();
+        setTimeout(() => {
+            $("#Home").show();
+            $("#contactId").show();
+        }, 6000);
     })
-    $("#Home").click(() => {
+    $("#contactId").click(async function() {
+        $("#Home").hide();
+        $("#contactId").hide();
+        await contactclick();
+        setTimeout(() => {
+            $("#Home").show();
+            $("#contactId").show();
+        }, 6000);
+    })
+
+    function homeclick() {
         $("#contactForm").hide();
         if (screen.width <= 900) {
             document.getElementById("llogin").style.setProperty("top", "0", "important");
@@ -390,11 +406,6 @@
         $("#trianguloBaixo").css("border-left-width", "0vw");
         setTimeout(timeout1 = () => {
             console.log("in")
-            $("#contactForm").hide();
-            if (screen.width <= 900) {
-                document.getElementById("llogin").style.setProperty("top", "0", "important");
-                document.getElementById("lloginMain").style.setProperty('flex-direction', 'column-reverse', 'important');
-            }
             $("#trianguloBaixo").css("transform", "rotateZ(360deg)");
             $("#trianguloBaixo").css("border-left-width", "");
             $("#trianguloBaixo").css("border-width", "65vh 0 0 55vw;");
@@ -402,13 +413,8 @@
         }, 3000);
         setTimeout(timeout2 = () => {
             $("#description").fadeIn();
-            $("#contactForm").hide();
-            if (screen.width <= 900) {
-                document.getElementById("llogin").style.setProperty("top", "0", "important");
-                document.getElementById("lloginMain").style.setProperty('flex-direction', 'column-reverse', 'important');
-            }
         }, 6000)
-    })
+    };
     $(".buttom4").click(function() {
         voltar = true;
         element2.classList.add('animate__animated', 'animate__zoomOutRight');
