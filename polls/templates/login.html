@@ -20,7 +20,20 @@
 
             <button style="position:absolute;right: 0%;" class="btn btn-dark float-sm-left" type="submit" name="mybtn" value="cal">Send</button>
         </form>
-
+        <div id="contReg" class="contReg" style="display:none;width:100%;position:relative;bottom:100%;">
+            <div class="regForm container">
+                <br>
+                <h5 style="margin-top:2vw;font-size: 2vw;" class="alignC">Sign up</h5>
+                <p style="font-size: 1vw;" class="alignC"> Create a Scrumban email address</p>
+                <h5>{{erro}}</h5>
+                <form id="regformid" method="post">
+                    {% csrf_token %} {{ form.as_p }}
+                    <div style="display:flex;justify-content: center;align-items: center;">
+                        <button style="margin-top:1vw;width: 14%;font-size: 1vw;" class="but btn btn-dark float-sm-left" name="sym" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <p style="left: -10px;position: relative;bottom: 250px;background-color:#282828;border-top: 20px solid #282828;border-left: 30px solid #282828;border-right: 20px solid #282828;border-bottom: 20px solid #282828" id="description">
             Scrumban helps you organizing your tasks. <br> Create projects, share them with partners and keep your tasks up to date.
         </p>
@@ -215,6 +228,25 @@
         transition: all 2s ease
     }
     
+    #regformid input {
+        height: 2vw !important;
+        background-color: #282828;
+    }
+    
+    #regformid label {
+        font-size: 0.8vw !important;
+        margin-bottom: 0 !important;
+    }
+    
+    #regformid .col {
+        margin: 0;
+    }
+    
+    #regformid ul,
+    p {
+        margin: 0;
+    }
+    
     @media only screen and (max-width: 900px) {
         #lloginMain {
             flex-direction: column-reverse !important;
@@ -242,7 +274,8 @@
         #eid {
             height: 20px !important;
         }
-        #contactForm {
+        #contactForm,
+        #contReg {
             bottom: 320px !important;
         }
         #mediaContainer {
@@ -272,6 +305,7 @@
         width: 200px;
         border-radius: 70px;
         margin-bottom: 15px;
+        margin-top: 15px;
     }
     
     .buttom2,
@@ -370,6 +404,7 @@
         }
         $("#trianguloBaixo").css("transform", "rotateZ(180deg)");
         $("#description").fadeOut();
+        $("#contReg").fadeOut();
         setTimeout(timeout3 = () => {
             $("#contactForm").fadeIn();
             $("#trianguloBaixo").css("border-color", "#f8f9fa transparent transparent #f8f9fa");
@@ -381,24 +416,56 @@
     $("#Home").click(async function() {
         $("#Home").hide();
         $("#contactId").hide();
+        $("#register").hide();
         await homeclick();
         setTimeout(() => {
             $("#Home").show();
             $("#contactId").show();
+            $("#register").show();
         }, 6000);
     })
     $("#contactId").click(async function() {
         $("#Home").hide();
         $("#contactId").hide();
+        $("#register").hide();
         await contactclick();
         setTimeout(() => {
             $("#Home").show();
             $("#contactId").show();
+            $("#register").show();
+        }, 6000);
+    })
+    $("#register").click(async function() {
+        $("#Home").hide();
+        $("#contactId").hide();
+        $("#register").hide();
+        await registerclick();
+        setTimeout(() => {
+            $("#Home").show();
+            $("#contactId").show();
+            $("#register").show();
         }, 6000);
     })
 
+    function registerclick() {
+        if (screen.width <= 900) {
+            document.getElementById("lloginMain").style.setProperty('flex-direction', 'column', 'important');
+        }
+        $("#trianguloBaixo").css("transform", "rotateZ(180deg)");
+        $("#description").fadeOut();
+        $("#contactForm").fadeOut();
+        setTimeout(timeout3 = () => {
+            $("#contReg").fadeIn();
+            $("#trianguloBaixo").css("border-color", "#f8f9fa transparent transparent #f8f9fa");
+            if (screen.width <= 900) {
+                document.getElementById("llogin").style.setProperty("top", "-200px", "important");
+            }
+        }, 3000);
+    }
+
     function homeclick() {
         $("#contactForm").hide();
+        $("#contReg").hide();
         if (screen.width <= 900) {
             document.getElementById("llogin").style.setProperty("top", "0", "important");
             document.getElementById("lloginMain").style.setProperty('flex-direction', 'column-reverse', 'important');
@@ -447,5 +514,17 @@
             $(".scrubantxt").fadeIn(800);
         }, 6000);
     }, 8000);
+    for (let i = 2; i <= 5; i++) {
+        $("form p:nth-child(" + i + ")").addClass("col");
+
+    }
+    $("form p:nth-child(2)").addClass("linha1");
+    $("form p:nth-child(3)").addClass("linha1");
+    $("form p:nth-child(4)").addClass("linha2");
+    $("form p:nth-child(5)").addClass("linha2");
+    $(".helptext").hide();
+    $("form ul li").css("font-size", "0.6vw");
+    $(".linha1").wrapAll("<div class='row' />");
+    $(".linha2").wrapAll("<div class='row' />");
 </script>
 {% endblock %}

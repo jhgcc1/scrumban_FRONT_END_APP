@@ -1,29 +1,11 @@
 {% extends 'base.html' %} {% block inputs %} {%load static%}
-<div class="cont">
-    <div class="regForm container">
-        <br>
-        <br>
-        <h5 class="alignC">Sign up</h5>
-        <p class="alignC"> Create a Scrumban email address</p>
-        <h5>{{erro}}</h5>
-        <form id="regformid" method="post">
-            {% csrf_token %} {{ form.as_p }}
-            <div style="display:flex;justify-content: center;align-items: center;">
-                <button class="but btn btn-dark float-sm-left" name="sym" type="submit">Register</button>
-            </div>
-        </form>
-    </div>
-</div>
+
 <style type="text/css">
     ul.errorlist {
         color: red;
     }
     
-    .regForm {
-        width: 420px;
-        background: #ffffff;
-        border-radius: 25px;
-    }
+
     
     #regformid {
         margin: 22px 22px 22px 22px;

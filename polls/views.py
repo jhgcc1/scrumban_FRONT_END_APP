@@ -77,18 +77,29 @@ def checarlogin(request):
 def login(request):
 	args={}
 	if request.method =='POST':
-		form = loginform(request.POST)
-		if form.is_valid():
-			nome=request.POST.get('nome')
-			senha=request.POST.get('senha')
-
-			user = authenticate(request,username=nome, password=senha)
+		if(request.POST.get('mybtnLogin')):
+			name=request.POST.get('name')
+			passw=request.POST.get('passw')
+			user = authenticate(request,username=name, password=passw)
 			if user is not None:
 				alogin(request,user)
-				
 				return redirect('home')
 			else:
 				args["errorLogin"]="initial"
 				return render(request,"login.html",args)
+		if(request.POST.get('mybtnRegister')):
+			form = registrationform(request.POST)
+			args['form']=form
+			if form.is_valid():
+				username=form.save()
+				mudanca=uuprofile.objects.get(usuario=username)
+				mudanca.save()
+				modelo2 = True
+				args['modelo2']=modelo2
+				return redirect('login')
+			else:
+				return render(request,"register.html",args)
 	else:
+		form = registrationform()
+		args['form']=form
 		return render(request,"login.html",args)
