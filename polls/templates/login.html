@@ -3,38 +3,39 @@
     <div id="mediaContainer" style="margin-right:5%;height:70vh">
         <div id=trianguloBaixo>
         </div>
-        <form id="contactForm" style="display: none;position:relative;bottom:90%;left: 14.5%;width: 70%;" method="get">
-            <h6 id="letus" style="font-size:2.5vw">Let us know what you want to say!</h6>
-            <div class="form-group">
-                <p style="font-size:12px">Email:</p>
-                <div class="input-group sm-3">
-                    <input id="eid" type="text" style=" height:5vh;background-color:#282828;" class="form-control input-sm" id="apower" name="emailend" required name="price" min="0" value="" step=".01">
+        <form id="contactForm" style="transition:all 3s ease;display: none;position:relative;bottom: 86%;height: 65vh;width: 55vw;" method="get">
+            <div style="margin:10px">
+                <h6 id="letus" style="font-size:2.5vw">Let us know what you want to say!</h6>
+                <div class="form-group">
+                    <p style="font-size: 1.2vw;">Email:</p>
+                    <div class="input-group sm-3">
+                        <input id="eid" type="text" style="color: white;height:6vh;background-color:#282828;" class="form-control input-sm" id="apower" name="emailend" required name="price" min="0" value="" step=".01">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <p style="font-size:12px">Message:</p>
-                <div class="input-group sm-3" style="">
-                    <textarea id="mid" style="height:20vh;background-color:#282828;" class="form-control rounded-0" name="emailtext" id="exampleFormControlTextarea1" rows="5" required></textarea>
+                <div class="form-group">
+                    <p style="font-size: 1.2vw;">Message:</p>
+                    <div class="input-group sm-3" style="">
+                        <textarea id="mid" style="color: white;height:30vh;background-color:#282828;" class="form-control rounded-0" name="emailtext" id="exampleFormControlTextarea1" rows="5" required></textarea>
+                    </div>
                 </div>
-            </div>
 
-            <button style="position:absolute;right: 0%;" class="btn btn-dark float-sm-left" type="submit" name="mybtn" value="cal">Send</button>
+                <button id="sendbutton" style="position:absolute;right: 2%;font-size: 1.5vw;" class="btn btn-dark float-sm-left" type="submit" name="mybtn" value="cal">Send</button>
+            </div>
         </form>
-        <div id="contReg" class="contReg" style="display:none;width:100%;position:relative;bottom:100%;">
-            <div class="regForm container">
-                <br>
-                <h5 style="margin-top:2vw;font-size: 2vw;" class="alignC">Sign up</h5>
-                <p style="font-size: 1vw;" class="alignC"> Create a Scrumban email address</p>
+        <div id="contReg" class="contReg" style="display:none;position:relative;bottom:100%;">
+            <div class="regForm" style="margin:10px">
+                <h5 style="margin-top:2vw;font-size: 2vw;" class="alignC singupTitle">Sign up</h5>
+                <p style="font-size: 1vw;" class="alignC singupsubTitle"> Create a Scrumban email address</p>
                 <h5>{{erro}}</h5>
                 <form id="regformid" method="post">
                     {% csrf_token %} {{ form.as_p }}
                     <div style="display:flex;justify-content: center;align-items: center;">
-                        <button style="margin-top:1vw;width: 14%;font-size: 1vw;" class="but btn btn-dark float-sm-left" name="sym" type="submit">Register</button>
+                        <button id="regbutton" style="margin-bottom:1vw;margin-top:1vw;" class="but btn btn-dark float-sm-left" name="sym" type="submit">Register</button>
                     </div>
                 </form>
             </div>
         </div>
-        <p style="left: -10px;position: relative;bottom: 250px;background-color:#282828;border-top: 20px solid #282828;border-left: 30px solid #282828;border-right: 20px solid #282828;border-bottom: 20px solid #282828" id="description">
+        <p style="left: -10px;position: relative;bottom: 50%;background-color:#282828;border-top: 20px solid #282828;border-left: 30px solid #282828;border-right: 20px solid #282828;border-bottom: 20px solid #282828" id="description">
             Scrumban helps you organizing your tasks. <br> Create projects, share them with partners and keep your tasks up to date.
         </p>
     </div>
@@ -229,12 +230,13 @@
     }
     
     #regformid input {
-        height: 2vw !important;
+        height: 2.5vw;
         background-color: #282828;
+        color: white;
     }
     
     #regformid label {
-        font-size: 0.8vw !important;
+        font-size: 1vw !important;
         margin-bottom: 0 !important;
     }
     
@@ -247,7 +249,39 @@
         margin: 0;
     }
     
+    #regbutton {
+        font-size: 1vw;
+    }
+    
     @media only screen and (max-width: 900px) {
+        #regformid input {
+            height: 15px !important;
+            background-color: #282828;
+        }
+        #regbutton {
+            font-size: 12px !important;
+        }
+        #sendbutton {
+            font-size: 12px !important;
+        }
+        .singupsubTitle {
+            font-size: 15px !important;
+        }
+        .singupTitle {
+            font-size: 18px !important;
+        }
+        #regformid label {
+            font-size: 12px !important;
+            margin-bottom: 0 !important;
+        }
+        #regformid>p {
+            font-size: 10px !important;
+            margin-bottom: 0 !important;
+        }
+        #regformid>ul>li {
+            font-size: 13px !important;
+            margin-bottom: 0 !important;
+        }
         #lloginMain {
             flex-direction: column-reverse !important;
         }
@@ -267,6 +301,7 @@
         }
         #description {
             font-size: 3vw !important;
+            bottom: 250px !important;
         }
         #mid {
             height: 100px !important;
@@ -274,9 +309,16 @@
         #eid {
             height: 20px !important;
         }
-        #contactForm,
-        #contReg {
+        #contactForm {
             bottom: 320px !important;
+            height: 300px !important;
+            width: 75vw !important;
+            transition: all 3s ease !important;
+        }
+        #contReg {
+            width: 75vw;
+            bottom: 350px !important;
+            transition: all 3s ease !important;
         }
         #mediaContainer {
             height: 100%!important;
@@ -291,7 +333,7 @@
         border-color: transparent transparent transparent #f8f9fa;
         text-align: center;
         vertical-align: middle;
-        transition: 3s ease;
+        transition: all 3s ease;
         transform: rotateY(0);
     }
     
@@ -407,6 +449,7 @@
         $("#contReg").fadeOut();
         setTimeout(timeout3 = () => {
             $("#contactForm").fadeIn();
+            $("#contactForm").css("background-color", "#f8f9fa");
             $("#trianguloBaixo").css("border-color", "#f8f9fa transparent transparent #f8f9fa");
             if (screen.width <= 900) {
                 document.getElementById("llogin").style.setProperty("top", "-200px", "important");
@@ -456,6 +499,7 @@
         $("#contactForm").fadeOut();
         setTimeout(timeout3 = () => {
             $("#contReg").fadeIn();
+            $("#contReg").css("background-color", "#f8f9fa");
             $("#trianguloBaixo").css("border-color", "#f8f9fa transparent transparent #f8f9fa");
             if (screen.width <= 900) {
                 document.getElementById("llogin").style.setProperty("top", "-200px", "important");
@@ -464,6 +508,8 @@
     }
 
     function homeclick() {
+        $("#contReg").css("background-color", "");
+        $("contactForm").css("background-color", "");
         $("#contactForm").hide();
         $("#contReg").hide();
         if (screen.width <= 900) {
@@ -523,7 +569,7 @@
     $("form p:nth-child(4)").addClass("linha2");
     $("form p:nth-child(5)").addClass("linha2");
     $(".helptext").hide();
-    $("form ul li").css("font-size", "0.6vw");
+    $("form ul li").css("font-size", "1vw");
     $(".linha1").wrapAll("<div class='row' />");
     $(".linha2").wrapAll("<div class='row' />");
 </script>
