@@ -313,12 +313,12 @@
             bottom: 320px !important;
             height: 300px !important;
             width: 75vw !important;
-            transition: all 3s ease !important;
+            transition: all 1s ease !important;
         }
         #contReg {
             width: 75vw;
             bottom: 350px !important;
-            transition: all 3s ease !important;
+            transition: all 1s ease !important;
         }
         #mediaContainer {
             height: 100%!important;
@@ -377,6 +377,7 @@
     }
 </style>
 <script>
+    let currentPage = "home";
     let break1 = true;
     let voltar = false;
     let element = document.querySelector('.cont');
@@ -441,14 +442,29 @@
     })
 
     function contactclick() {
+
         if (screen.width <= 900) {
             document.getElementById("lloginMain").style.setProperty('flex-direction', 'column', 'important');
         }
-        $("#trianguloBaixo").css("transform", "rotateZ(180deg)");
+        if (currentPage == "register") {
+            $("#contReg").hide();
+            $("#trianguloBaixo").css("border-left-width", "1vw");
+            $("#contReg").css("width", "1vw");
+            $("#contactForm").css("width", "1vw");
+        } else {
+            $("#trianguloBaixo").css("transform", "rotateZ(180deg)");
+            $("#contReg").fadeOut();
+        }
+
         $("#description").fadeOut();
-        $("#contReg").fadeOut();
+
         setTimeout(timeout3 = () => {
-            $("#contactForm").fadeIn();
+            if (currentPage = "register") {
+                $("#trianguloBaixo").css("border-left-width", "55vw");
+                $("#contactForm").css("width", "55vw");
+            } else {
+                $("#contactForm").fadeIn();
+            }
             $("#contactForm").css("background-color", "#f8f9fa");
             $("#trianguloBaixo").css("border-color", "#f8f9fa transparent transparent #f8f9fa");
             if (screen.width <= 900) {
@@ -457,6 +473,7 @@
         }, 3000);
     };
     $("#Home").click(async function() {
+
         $("#Home").hide();
         $("#contactId").hide();
         $("#register").hide();
@@ -465,28 +482,42 @@
             $("#Home").show();
             $("#contactId").show();
             $("#register").show();
-        }, 6000);
+            currentPage = "home";
+        }, 5000);
+
     })
     $("#contactId").click(async function() {
+
         $("#Home").hide();
         $("#contactId").hide();
         $("#register").hide();
         await contactclick();
+
         setTimeout(() => {
-            $("#Home").show();
-            $("#contactId").show();
-            $("#register").show();
+            if (currentPage == "register") {
+                $("#contactForm").fadeIn();
+                currentPage = "contact";
+                $("#Home").show();
+                $("#contactId").show();
+                $("#register").show();
+            }
         }, 6000);
+
     })
     $("#register").click(async function() {
+
         $("#Home").hide();
         $("#contactId").hide();
         $("#register").hide();
         await registerclick();
         setTimeout(() => {
-            $("#Home").show();
-            $("#contactId").show();
-            $("#register").show();
+            if (currentPage == "contact") {
+                $("#contReg").fadeIn();
+                currentPage = "register";
+                $("#Home").show();
+                $("#contactId").show();
+                $("#register").show();
+            }
         }, 6000);
     })
 
@@ -494,11 +525,25 @@
         if (screen.width <= 900) {
             document.getElementById("lloginMain").style.setProperty('flex-direction', 'column', 'important');
         }
-        $("#trianguloBaixo").css("transform", "rotateZ(180deg)");
+        if (currentPage == "contact") {
+            $("#trianguloBaixo").css("border-left-width", "1vw");
+            $("#contactForm").css("width", "1vw");
+            $("#contReg").css("width", "1vw");
+        } else {
+            $("#trianguloBaixo").css("transform", "rotateZ(180deg)");
+        }
         $("#description").fadeOut();
         $("#contactForm").fadeOut();
         setTimeout(timeout3 = () => {
-            $("#contReg").fadeIn();
+            if (currentPage = "contact") {
+                $("#trianguloBaixo").css("border-left-width", "55vw");
+                $("#contactForm").css("width", "55vw");
+                $("#contReg").css("width", "55vw");
+
+            } else {
+                $("#contReg").fadeIn();
+            }
+
             $("#contReg").css("background-color", "#f8f9fa");
             $("#trianguloBaixo").css("border-color", "#f8f9fa transparent transparent #f8f9fa");
             if (screen.width <= 900) {
